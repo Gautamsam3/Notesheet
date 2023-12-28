@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Review NoteSheet {% endblock title %}
+
+{% block content %}
+    <h1>Review NoteSheet</h1>
+    <p><strong>Name:</strong> {{ notesheet.name }}</p>
+    <p><strong>Faculty:</strong> {{ notesheet.faculty }}</p>
+    <p><strong>Department:</strong> {{ notesheet.department }}</p>
+    <p><strong>Event Name:</strong> {{ notesheet.event_name }}</p>
+    <p><strong>Event Date:</strong> {{ notesheet.event_date }}</p>
+    <p><strong>Event Time:</strong> {{ notesheet.event_time }}</p>
+    <p><strong>Objective:</strong> {{ notesheet.objective }}</p>
+	<p><strong>Brief description:</strong> {{ notesheet.brief_desc }}</p>
+	
+    
+    <form method="post">
+        {% csrf_token %}
+        <label for="status">Review Status:</label>
+        <select name="status" id="status">
+            <option value="accepted">Accept</option>
+            <option value="rejected">Reject</option>
+        </select>
+        <br>
+        <label for="comment">Comment:</label>
+        <textarea name="comment" id="comment"></textarea>
+        <br>
+        <button type="submit">Submit Review</button>
+    </form>
+{% endblock %}

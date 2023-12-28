@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Pending Page {% endblock title %}
+
+{% block content %}
+    <style>
+        .review-button {
+            display: inline-block;
+            background-color: #007BFF; /* Button background color */
+            color: #fff; /* Text color */
+            padding: 10px 20px; /* Padding for the button */
+            text-decoration: none;
+            border-radius: 5px; /* Rounded corners */
+            font-weight: bold;
+            margin-left: 10px; /* Add spacing between the link and the button */
+        }
+
+        .review-button:hover {
+            background-color: #0056b3; /* Change background color on hover */
+        }
+    </style>
+
+    <h1>Pending Notesheets</h1>
+    <ul>
+        {% for notesheet in notesheets %}
+            <li>
+                <strong>Name:</strong> {{ notesheet.name }} - 
+                <strong>Event Name:</strong> {{ notesheet.event_name }} -
+                <strong>Event Date:</strong> {{ notesheet.event_date }} -
+                <strong>Event Time:</strong> {{ notesheet.event_time }}
+                <a href="{% url 'review_notesheet' notesheet.id %}" class="review-button">Review</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
